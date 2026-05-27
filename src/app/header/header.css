@@ -12,7 +12,7 @@
 .logo {
     width: 211px;
     height: 48px;
-    background-image: url('/icons/TestLogo.svg');
+    background-image: url('icons/TestLogo.svg');
     opacity: 1;
     cursor: pointer;
 }
@@ -39,27 +39,27 @@
 }
 
 #overview-icon {
-    background: url('/icons/home_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    background: url('icons/home_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 #patients-icon {
-    background: url('/icons/group_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    background: url('icons/group_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 #schedule-icon {
-    background: url('/icons/calendar_today_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    background: url('icons/calendar_today_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 #messages-icon {
-    background: url('/icons/chat_bubble_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    background: url('icons/chat_bubble_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 #transactions-icon {
-    background: url('/icons/credit_card_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    background: url('icons/credit_card_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
@@ -83,14 +83,14 @@
 #settings-gear-icon {
     width: 20px;
     height: 20px;
-    background: url('/icons/settings_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    background: url('icons/settings_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 #settings-elepsis-icon {
     width: 20px;
     height: 20px;
-    background: url('/icons/more_horiz_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    background: url('icons/more_horiz_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
     opacity: 1;
     transform: rotate(90deg);
 }

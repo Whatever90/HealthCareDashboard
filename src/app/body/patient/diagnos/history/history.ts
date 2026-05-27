@@ -26,7 +26,7 @@ export class History implements OnChanges {
     return [
       {
         title: 'Respiratory Rate',
-        iconName: 'respiratory rate.svg',
+        iconName: 'respiratory_rate.svg',
         value: `${latest.respiratory_rate.value} bpm`,
         backgroundColor: '#E0F3FA',
         status: this.toStatus(latest.respiratory_rate.levels),
