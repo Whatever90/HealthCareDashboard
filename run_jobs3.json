@@ -1,0 +1,97 @@
+﻿{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 78031229555,
+      "run_id": 26498100178,
+      "workflow_name": "Deploy to GitHub Pages",
+      "head_branch": "master",
+      "run_url": "https://api.github.com/repos/Whatever90/HealthCareDashboard/actions/runs/26498100178",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOSpEdE88AAAASKwYScw",
+      "head_sha": "52c57d526be36838ec5cf467511d8b2af6f955d4",
+      "url": "https://api.github.com/repos/Whatever90/HealthCareDashboard/actions/jobs/78031229555",
+      "html_url": "https://github.com/Whatever90/HealthCareDashboard/actions/runs/26498100178/job/78031229555",
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-05-27T07:46:55Z",
+      "started_at": "2026-05-27T07:46:57Z",
+      "completed_at": null,
+      "name": "build-and-deploy",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-05-27T07:46:58Z",
+          "completed_at": "2026-05-27T07:46:59Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-05-27T07:46:59Z",
+          "completed_at": "2026-05-27T07:47:00Z"
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-05-27T07:47:00Z",
+          "completed_at": "2026-05-27T07:47:05Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 4,
+          "started_at": "2026-05-27T07:47:05Z",
+          "completed_at": null
+        },
+        {
+          "name": "Build",
+          "status": "pending",
+          "conclusion": null,
+          "number": 5,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Deploy to GitHub Pages",
+          "status": "pending",
+          "conclusion": null,
+          "number": 6,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "pending",
+          "conclusion": null,
+          "number": 11,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null,
+          "number": 12,
+          "started_at": null,
+          "completed_at": null
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Whatever90/HealthCareDashboard/check-runs/78031229555",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000035,
+      "runner_name": "GitHub Actions 1000000035",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

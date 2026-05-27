@@ -1,0 +1,41 @@
+﻿{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 78029119040,
+      "run_id": 26497471368,
+      "workflow_name": "Deploy to GitHub Pages",
+      "head_branch": "master",
+      "run_url": "https://api.github.com/repos/Whatever90/HealthCareDashboard/actions/runs/26497471368",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOSpEdE88AAAASKuXeQA",
+      "head_sha": "948361e40a168ee3d8552f646c022bb378ae77f3",
+      "url": "https://api.github.com/repos/Whatever90/HealthCareDashboard/actions/jobs/78029119040",
+      "html_url": "https://github.com/Whatever90/HealthCareDashboard/actions/runs/26497471368/job/78029119040",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-05-27T07:33:01Z",
+      "started_at": "2026-05-27T07:33:03Z",
+      "completed_at": "2026-05-27T07:33:06Z",
+      "name": "build-and-deploy",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 1,
+          "started_at": "2026-05-27T07:33:03Z",
+          "completed_at": "2026-05-27T07:33:05Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Whatever90/HealthCareDashboard/check-runs/78029119040",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000028,
+      "runner_name": "GitHub Actions 1000000028",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}
