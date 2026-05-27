@@ -26,7 +26,7 @@ export class VitalInfo {
   };
 
   get iconSrc(): string {
-    return `icons/${this.vital.iconName}`;
+    return `assets/icons/${this.vital.iconName}`;
   }
 
   get statusLabel(): string {
@@ -43,11 +43,11 @@ export class VitalInfo {
 
   get statusIconSrc(): string | null {
     if (this.vital.status === 'higher') {
-      return 'icons/ArrowUp.svg';
+      return 'assets/icons/ArrowUp.svg';
     }
 
     if (this.vital.status === 'lower') {
-      return 'icons/ArrowDown.svg';
+      return 'assets/icons/ArrowDown.svg';
     }
 
     return null;

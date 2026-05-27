@@ -12,7 +12,7 @@
 }
 
 #search-icon {
-    background: url('../../../icons/search_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    background: url('../../../assets/icons/search_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
@@ -65,6 +65,6 @@
 .patient-elepsis-icon {
     width: 25px;
     height: 5px;
-    background: url('../../../icons/more_horiz_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    background: url('../../../assets/icons/more_horiz_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
     opacity: 1;
 }
