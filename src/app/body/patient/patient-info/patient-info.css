@@ -1,0 +1,28 @@
+.patient-image,
+.patient-image-placeholder {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.patient-image {
+    object-fit: cover;
+}
+
+.patient-image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F6F7F8;
+    color: #707070;
+    font-size: 72px;
+    font-weight: 700;
+}
+.info-item {
+    font-size: 14px;
+}
+.show-all-btn {
+    border-radius: 41px;
+    font-size: 14px;
+    font-weight: bold;
+}

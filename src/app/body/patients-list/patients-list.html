@@ -1,0 +1,22 @@
+<div class="wrapper card-container">
+    <div class="card-container-header d-flex justify-content-between align-items-center">
+        <div class="card-container-title">
+            Patients
+        </div>
+        <div class="icon" id="search-icon">
+        </div>
+    </div>
+    <div class="patients-list">
+        @for (patient of patients; track patient.name) {
+            <div class="patient-list-item pointer" [ngClass]="{ 'active bg-azure-light': patient.name === selectedPatientName }" (click)="selectPatient(patient.name)">
+                <img class="patient-photo" [src]="patient.profile_picture" [alt]="patient.name" />
+                <div class="patient-summary">
+                    <p class="patient-name">{{ patient.name }}</p>
+                    <p class="patient-meta">{{ patient.gender }}, {{ patient.age }}</p>
+                </div>
+                <div class="patient-elepsis-icon"></div>
+            </div>
+        }
+    </div>
+
+</div>

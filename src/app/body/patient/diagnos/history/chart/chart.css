@@ -1,0 +1,10 @@
+.blood-pressure-chart {
+    height: 240px;
+    min-width: 0;
+    position: relative;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+}

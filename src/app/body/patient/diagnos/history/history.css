@@ -1,0 +1,78 @@
+.diagnose-box-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.diagnose-box-wrapper app-vital-info {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.card-container-header {
+    margin-bottom: 40px;
+}
+
+.chart-wrapper {
+    background-color: #F4F0FE;
+    border-radius: 12px;
+    margin-left: 0;
+    margin-right: 0;
+    overflow: hidden;
+    padding: 16px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.chart-wrapper>[class*="col-"] {
+    min-width: 0;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #666;
+}
+
+#dropdown_arrow {
+    height: 6px;
+    width: 12px;
+    background: url('/icons/expand_more_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+}
+.dot {
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+}
+.systolic-color {
+    background-color: #E66FD2;
+}
+
+.diastolic-color {
+    background-color: #8C6FE6;
+}
+.blood-pressure-info {
+    gap: 6px;
+}
+.info-value {
+    font-size: 22px;
+    font-weight: 700;
+}
+.trend-arrow-up {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url('/icons/ArrowUp.svg') center / contain no-repeat;
+    opacity: 1;
+}
+.trend-arrow-down {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url('/icons/ArrowDown.svg') center / contain no-repeat;
+    opacity: 1;
+}

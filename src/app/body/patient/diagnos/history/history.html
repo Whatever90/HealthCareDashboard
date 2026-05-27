@@ -1,0 +1,67 @@
+<!-- Diagnosis History -->
+
+<div class="wrapper card-container">
+    <div class="card-container-header d-flex justify-content-between align-items-center">
+        <div class="card-container-title">
+            Diagnosis History
+        </div>
+    </div>
+    <div class="row chart-wrapper">
+        <div class="col-8">
+            <!-- chart header -->
+            <div class="chart-header d-flex justify-content-between align-items-center">
+                <div class="title">Blood Pressure</div>
+                <!-- dropdown -->
+                <div class="subtitle d-flex align-items-center">
+                    Last 6 months
+                    <span id="dropdown_arrow" class="ms-1"></span>
+                </div>
+            </div>
+            <!-- chart -->
+            <div class="chart">
+                <chart [diagnosis_history]="diagnosis_history"></chart>
+            </div>
+        </div>
+        <div class="col-4">
+            <!-- Systolic -->
+            <div class="blood-pressure-info d-flex flex-column mb-4">
+                <div class="info-title
+                    d-flex align-items-center fw-bold">
+                    <span class="systolic-color me-2 dot"></span>
+                    Systolic
+                </div>
+                <div class="info-value">{{latest_diagnose?.blood_pressure?.systolic?.value}}</div>
+                <div class="info-trend d-flex align-items-center">
+                    @if(latest_diagnose?.blood_pressure?.systolic?.levels === 'Lower than Average') {
+                    <span class="trend-arrow-down me-1"></span>
+                    } @else if (latest_diagnose?.blood_pressure?.systolic?.levels === 'Higher than Average') {
+                    <span class="trend-arrow-up me-1"></span>
+                    }
+                    <span class="trend-value">{{latest_diagnose?.blood_pressure?.systolic?.levels}}</span>
+                </div>
+            </div>
+            <!-- Diastolic -->
+            <div class="blood-pressure-info d-flex flex-column">
+                <div class="info-title
+                    d-flex align-items-center fw-bold">
+                    <span class="diastolic-color me-2 dot"></span>
+                    Diastolic
+                </div>
+                <div class="info-value">{{latest_diagnose?.blood_pressure?.diastolic?.value}}</div>
+                <div class="info-trend d-flex align-items-center">
+                    @if(latest_diagnose?.blood_pressure?.diastolic?.levels === 'Lower than Average') {
+                    <span class="trend-arrow-down me-1"></span>
+                    } @else if (latest_diagnose?.blood_pressure?.diastolic?.levels === 'Higher than Average') {
+                    <span class="trend-arrow-up me-1"></span>
+                    }
+                    <span class="trend-value">{{latest_diagnose?.blood_pressure?.diastolic?.levels}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="diagnose-box-wrapper">
+        @for (vital of vitalCards; track vital.title) {
+        <app-vital-info [vital]="vital"></app-vital-info>
+        }
+    </div>
+</div>

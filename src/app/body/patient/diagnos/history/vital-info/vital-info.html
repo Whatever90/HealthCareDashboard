@@ -1,0 +1,11 @@
+<div class="diagnose-box" [style.background-color]="vital.backgroundColor">
+    <img class="vital-icon" [src]="iconSrc" [alt]="vital.title" />
+    <div class="vital-title">{{ vital.title }}</div>
+    <div class="vital-value">{{ vital.value }}</div>
+    <div class="vital-status">
+        @if (statusIconSrc) {
+            <img class="status-icon" [src]="statusIconSrc" alt="" />
+        }
+        <span>{{ statusLabel }}</span>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+.dashboard-body {
+    height: calc(100vh - 108px);
+    overflow: hidden;
+}
+
+.dashboard-row {
+    height: 100%;
+    min-height: 0;
+}
+
+.dashboard-column {
+    height: 100%;
+    min-height: 0;
+}

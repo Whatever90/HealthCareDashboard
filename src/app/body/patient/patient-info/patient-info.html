@@ -1,0 +1,57 @@
+<div class="wrapper card-container d-flex justify-content-between align-items-center flex-column gap-3">
+    @if (selectedPatient; as patient) {
+    <div class="patient-info d-flex flex-column align-items-center mb-1">
+        <!-- PIC 200x200 -->
+        @if (patient.profile_picture) {
+        <img [src]="patient.profile_picture" alt="Patient Image" class="patient-image">
+        } @else {
+        <div class="patient-image-placeholder" aria-label="No patient image">?</div>
+        }
+    </div>
+    <div class="card-container-title">{{ patient.name }}</div>
+    <div class="basic-info w-100 d-flex flex-column align-items-start gap-4">
+        <!-- dob -->
+        <div class="info-wrapper d-flex">
+            <img src="/icons/BirthIcon.svg" alt="Birth Icon" class="info-icon me-2">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Date of Birth:</span>
+                <span class="info-value fw-bold">{{ patient.date_of_birth | date: 'MMMM d, y' }}</span>
+            </div>
+        </div>
+        <!-- gender -->
+        <div class="info-wrapper d-flex">
+            <img src="/icons/FemaleIcon.svg" alt="Gender Icon" class="info-icon me-2">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Gender:</span>
+                <span class="info-value fw-bold">{{ patient.gender }}</span>
+            </div>
+        </div>
+        <!-- contact -->
+        <div class="info-wrapper d-flex">
+            <img src="/icons/PhoneIcon.svg" alt="Contact Icon" class="info-icon me-2">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Contact Info:</span>
+                <span class="info-value fw-bold">{{ patient.phone_number }}</span>
+            </div>
+        </div>
+        <!-- Emergency Contacts -->
+        <div class="info-wrapper d-flex">
+            <img src="/icons/PhoneIcon.svg" alt="Emergency Icon" class="info-icon me-2">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Emergency Contacts:</span>
+                <span class="info-value fw-bold">{{ patient.emergency_contact }}</span>
+            </div>
+        </div>
+        <!-- Insurance Provider -->
+        <div class="info-wrapper d-flex">
+            <img src="/icons/InsuranceIcon.svg" alt="Insurance Icon" class="info-icon me-2">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Insurance Provider:</span>
+                <span class="info-value fw-bold">{{ patient.insurance_type }}</span>
+            </div>
+        </div>
+
+    </div>
+    <button class="bg-azure btn show-all-btn m-3 ps-4 pe-4"> Show All Information</button>
+    }
+</div>

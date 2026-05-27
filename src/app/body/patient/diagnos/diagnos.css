@@ -1,0 +1,21 @@
+:host {
+    display: block;
+    height: 100%;
+    min-height: 0;
+}
+
+.diagnos-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+history {
+    flex: 0 0 auto;
+}
+
+list {
+    flex: 1 1 auto;
+    min-height: 0;
+}

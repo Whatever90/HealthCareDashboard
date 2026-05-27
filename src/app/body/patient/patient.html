@@ -1,0 +1,19 @@
+@if (selectedPatient; as patient) {
+  <div class="row patient-detail-row">
+    <div class="col-8 patient-main-column">
+      <diagnos [diagnostic_list]="patient.diagnostic_list" [diagnosis_history]="patient.diagnosis_history"></diagnos>
+    </div>
+    <div class="col-4 patient-side-column">
+      <div class="patient-side-stack">
+        <div class="patient-info-slot">
+          <patient-info [selectedPatient]="patient"></patient-info>
+        </div>
+        <div class="lab-results-slot">
+          <lab-results [results]="patient.lab_results"></lab-results>
+        </div>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div>No patient selected.</div>
+}

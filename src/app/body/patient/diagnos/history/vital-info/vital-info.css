@@ -1,0 +1,43 @@
+
+.diagnose-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border-radius: 12px;
+    min-width: 0;
+    width: 100%;
+}
+
+.vital-icon {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+}
+
+.vital-title {
+    color: #072635;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.vital-value {
+    color: #072635;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.vital-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #072635;
+    font-size: 14px;
+    min-height: 20px;
+}
+
+.status-icon {
+    width: 12px;
+    height: 12px;
+}

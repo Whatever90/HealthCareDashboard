@@ -1,0 +1,70 @@
+:host {
+    display: block;
+    height: 100%;
+    min-height: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100% - 18px);
+    min-height: 0;
+}
+
+#search-icon {
+    background: url('/icons/search_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.patients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+    margin-right: -20px;
+    margin-left: -20px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.patient-list-item {
+    display: flex;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.patient-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 16px;
+}
+
+.patient-summary {
+    width: stretch;
+}
+
+.patient-name {
+    color: #072635;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.patient-meta {
+    color: #707070;
+    font-size: 14px;
+}
+
+.patient-elepsis-icon {
+    width: 25px;
+    height: 5px;
+    background: url('/icons/more_horiz_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    opacity: 1;
+}

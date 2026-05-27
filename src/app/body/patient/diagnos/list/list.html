@@ -1,0 +1,27 @@
+<div class="wrapper card-container">
+    <div class="card-container-header d-flex justify-content-between align-items-center mb-4">
+        <div class="card-container-title">
+            Diagnostic List
+        </div>
+    </div>
+    <div class="table-wrapper">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">Problem/Diagnosis</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (diagnosis of diagnostic_list; track diagnosis.name) {
+                <tr class="pointer">
+                    <td>{{ diagnosis.name }}</td>
+                    <td>{{ diagnosis.description }}</td>
+                    <td>{{ diagnosis.status }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

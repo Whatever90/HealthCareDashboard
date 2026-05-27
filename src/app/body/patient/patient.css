@@ -1,0 +1,28 @@
+:host {
+    display: block;
+    height: 100%;
+    min-height: 0;
+}
+
+.patient-detail-row,
+.patient-main-column,
+.patient-side-column {
+    height: 100%;
+    min-height: 0;
+}
+
+.patient-side-stack {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+.patient-info-slot {
+    flex: 0 0 auto;
+}
+
+.lab-results-slot {
+    flex: 1 1 auto;
+    min-height: 0;
+}

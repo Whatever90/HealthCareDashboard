@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+* {
+    font-family: 'Manrope', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: #F6F7F8 0% 0% no-repeat padding-box;
+    opacity: 1;
+    padding: 18px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+p {
+    margin-bottom: 0px;
+}
+
+.card-container {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 16px;
+    opacity: 1;
+    padding: 20px;
+    margin-top: 18px;
+}
+
+.card-container-title {
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.icon {
+    width: 25px;
+    height: 18px;
+}
+
+.bg-azure {
+    background: #01F0D0 0% 0% no-repeat padding-box;
+}
+
+.bg-azure-light {
+    background: #D8FCF7 0% 0% no-repeat padding-box;
+}
+.pointer {
+    cursor: pointer;
+}

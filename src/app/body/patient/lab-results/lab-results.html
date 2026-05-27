@@ -1,0 +1,16 @@
+<div class="wrapper card-container">
+    <div class="card-container-header d-flex justify-content-between align-items-center">
+        <div class="card-container-title">
+            Lab Results
+        </div>
+    </div>
+    <!-- list of results -->
+    <div class="lab-results-list d-flex flex-column">
+        @for (result of results; track result) {
+        <div class="lab-result-item d-flex justify-content-between align-items-center rounded pointer" [class.selected]="result === selectedResult">
+            {{ result }}
+            <img src="/icons/download_FILL0_wght300_GRAD0_opsz24 (1).svg" alt="View Details Icon" class="view-details-icon">
+        </div>
+        }
+    </div>
+</div>

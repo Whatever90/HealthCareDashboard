@@ -1,0 +1,10 @@
+<main class="dashboard-body">
+  <div class="row dashboard-row pb-3">
+    <div class="col-3 dashboard-column">
+      <patients-list [patients]="patientsList"></patients-list>
+    </div>
+    <div class="col-9 dashboard-column">
+      <patient-detail [selectedPatient]="selectedPatient"></patient-detail>
+    </div>
+  </div>
+</main>
