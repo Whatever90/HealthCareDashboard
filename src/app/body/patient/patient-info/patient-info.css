@@ -9,6 +9,13 @@
     object-fit: cover;
 }
 
+.info-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: inline-block;
+}
+
 .patient-image-placeholder {
     display: flex;
     align-items: center;
