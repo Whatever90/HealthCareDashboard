@@ -41,7 +41,7 @@
 #dropdown_arrow {
     height: 6px;
     width: 12px;
-    background: url('icons/expand_more_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
+    background: url('assets/icons/expand_more_FILL0_wght300_GRAD0_opsz24.svg') 0% 0% no-repeat padding-box;
 }
 .dot {
     height: 14px;
@@ -66,13 +66,13 @@
     display: inline-block;
     width: 12px;
     height: 12px;
-    background: url('icons/ArrowUp.svg') center / contain no-repeat;
+    background: url('assets/icons/ArrowUp.svg') center / contain no-repeat;
     opacity: 1;
 }
 .trend-arrow-down {
     display: inline-block;
     width: 12px;
     height: 12px;
-    background: url('icons/ArrowDown.svg') center / contain no-repeat;
+    background: url('assets/icons/ArrowDown.svg') center / contain no-repeat;
     opacity: 1;
 }
