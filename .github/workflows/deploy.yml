@@ -30,6 +30,9 @@ jobs:
       - name: Build
         run: npm run build -- --configuration production --base-href "/${{ github.event.repository.name }}/"
 
+      - name: Prepare SPA route fallback
+        run: cp dist/HealthCareDashboard/browser/index.html dist/HealthCareDashboard/browser/404.html
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
