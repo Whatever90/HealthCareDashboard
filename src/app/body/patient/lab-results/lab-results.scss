@@ -1,0 +1,75 @@
+@use 'breakpoints' as *;
+
+:host {
+    display: block;
+    height: 100%;
+    min-height: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100% - 18px);
+    min-height: 0;
+}
+
+:host(.patient-list-lab-results) .wrapper {
+    max-height: 100%;
+    margin-top: 0;
+}
+
+.lab-results-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.lab-result-item {
+    font-size: 14px;
+    padding: 10px 16px;
+}
+
+.view-details-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    display: inline-block;
+}
+
+.download-disabled {
+    display: inline-flex;
+    align-items: center;
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.download-disabled .view-details-icon {
+    filter: grayscale(1);
+}
+
+.selected {
+    background-color: #F6F7F8
+}
+
+@media (max-width: $desktop) {
+    :host,
+    .wrapper {
+        height: auto;
+    }
+
+    .lab-results-list {
+        max-height: 260px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .lab-result-item {
+        font-size: 13px;
+        padding: 10px 8px;
+    }
+
+    .lab-results-list {
+        max-height: 220px;
+    }
+}

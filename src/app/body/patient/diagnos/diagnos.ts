@@ -6,7 +6,7 @@ import { DiagnosisHistory, DiagnosticItem } from '../../../patient.service';
   selector: 'diagnos',
   imports: [History, List],
   templateUrl: './diagnos.html',
-  styleUrl: './diagnos.css',
+  styleUrl: './diagnos.scss',
 })
 export class Diagnos {
   @Input() diagnostic_list: DiagnosticItem[] = [];

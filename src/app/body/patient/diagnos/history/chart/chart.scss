@@ -1,0 +1,24 @@
+@use 'breakpoints' as *;
+
+.blood-pressure-chart {
+    height: 240px;
+    min-width: 0;
+    position: relative;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+}
+
+@media (max-width: $tablet) {
+    .blood-pressure-chart {
+        height: 220px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .blood-pressure-chart {
+        height: 180px;
+    }
+}

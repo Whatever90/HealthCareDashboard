@@ -7,7 +7,7 @@ import { DiagnosisHistory } from '../../../../../patient.service';
   selector: 'chart',
   imports: [BaseChartDirective],
   templateUrl: './chart.html',
-  styleUrl: './chart.css',
+  styleUrl: './chart.scss',
 })
 export class Chart implements OnChanges {
   @Input() diagnosis_history: DiagnosisHistory[] = [];

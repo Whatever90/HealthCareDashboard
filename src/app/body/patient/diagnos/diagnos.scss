@@ -1,28 +1,35 @@
+@use 'breakpoints' as *;
+
 :host {
     display: block;
     height: 100%;
     min-height: 0;
 }
 
-.patient-detail-row,
-.patient-main-column,
-.patient-side-column {
-    height: 100%;
-    min-height: 0;
-}
-
-.patient-side-stack {
+.diagnos-panel {
     display: flex;
     flex-direction: column;
     height: 100%;
     min-height: 0;
 }
 
-.patient-info-slot {
+history {
     flex: 0 0 auto;
 }
 
-.lab-results-slot {
+list {
     flex: 1 1 auto;
     min-height: 0;
+}
+
+@media (max-width: $desktop) {
+    :host,
+    .diagnos-panel {
+        height: auto;
+    }
+
+    history,
+    list {
+        flex: none;
+    }
 }

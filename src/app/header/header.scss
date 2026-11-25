@@ -1,0 +1,183 @@
+@use 'breakpoints' as *;
+@use 'assets' as assets;
+
+.header {
+    margin-bottom: 18px;
+    height: 72px;
+    background: white;
+    border-radius: 70px;
+    padding: 0px 32px 0px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    color: #072635;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: .03em;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.logo-accent {
+    color: #0a9b8e;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 20px;
+    color: #072635;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 3px;
+}
+
+#overview-icon {
+    background: url(assets.$icon-overview) 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+#patients-icon {
+    background: url(assets.$icon-patients) 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+#schedule-icon {
+    background: url(assets.$icon-calendar) 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+#messages-icon {
+    background: url(assets.$icon-messages) 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+#transactions-icon {
+    background: url(assets.$icon-transactions) 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    opacity: .45;
+    filter: grayscale(1);
+    cursor: not-allowed;
+}
+
+.profile * {
+    cursor: not-allowed;
+}
+
+.profile-details p {
+    font-size: 14px;
+}
+
+#profile-pic {
+    width: 44px;
+    height: 44px;
+    background: url(assets.$profile-photo) 0% 0% no-repeat padding-box;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+#settings-gear-icon {
+    width: 20px;
+    height: 20px;
+    background: url(assets.$icon-settings) 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+#settings-elepsis-icon {
+    width: 20px;
+    height: 20px;
+    background: url(assets.$icon-more) 0% 0% no-repeat padding-box;
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+@media (max-width: $widescreen) {
+    .header {
+        padding: 0 20px;
+    }
+
+    .nav-button {
+        padding: 10px 12px;
+        margin: 0 2px;
+        font-size: 12px;
+    }
+
+    .profile-details {
+        display: none;
+    }
+}
+
+@media (max-width: $desktop) {
+    .header {
+        height: auto;
+        min-height: 72px;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px 16px;
+        border-radius: 24px;
+    }
+
+    .nav-buttons {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        justify-content: space-between;
+    }
+
+    .nav-button {
+        flex: 0 0 auto;
+    }
+
+    .profile {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: $mobile) {
+    .header {
+        padding: 10px 12px;
+        margin-bottom: 12px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    #profile-pic {
+        width: 40px;
+        height: 40px;
+    }
+
+    .settings {
+        display: none !important;
+    }
+
+    .nav-button {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+}

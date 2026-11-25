@@ -14,8 +14,12 @@
                 </tr>
             </thead>
             <tbody>
-                @for (diagnosis of diagnostic_list; track diagnosis.name) {
-                <tr class="pointer">
+                @for (diagnosis of diagnostic_list; track $index) {
+                <tr class="pointer diagnosis-row"
+                    tabindex="0"
+                    (click)="openDiagnosis(diagnosis)"
+                    (keydown.enter)="openDiagnosis(diagnosis)"
+                    (keydown.space)="openDiagnosis(diagnosis); $event.preventDefault()">
                     <td>{{ diagnosis.name }}</td>
                     <td>{{ diagnosis.description }}</td>
                     <td>{{ diagnosis.status }}</td>
@@ -25,3 +29,33 @@
         </table>
     </div>
 </div>
+
+@if (selectedDiagnosis; as diagnosis) {
+<div class="diagnosis-modal-backdrop" (click)="closeDiagnosis()">
+    <section class="diagnosis-modal card-container"
+             role="dialog"
+             aria-modal="true"
+             [attr.aria-label]="diagnosis.name + ' diagnosis details'"
+             (click)="$event.stopPropagation()"
+             (keydown.escape)="closeDiagnosis()">
+        <div class="diagnosis-modal-header">
+            <div>
+                <p class="diagnosis-modal-eyebrow">
+                    {{ diagnosis.is_generated ? 'Generated sample diagnosis' : 'Diagnosis details' }}
+                </p>
+                <h2>{{ diagnosis.name }}</h2>
+            </div>
+            <button type="button" class="modal-close" aria-label="Close diagnosis details" (click)="closeDiagnosis()">×</button>
+        </div>
+        <p class="diagnosis-description">{{ diagnosis.description }}</p>
+        <dl class="diagnosis-details-grid">
+            <div><dt>Status</dt><dd>{{ diagnosis.status }}</dd></div>
+            <div><dt>Severity</dt><dd>{{ diagnosis.severity }}</dd></div>
+            <div><dt>Diagnosed</dt><dd>{{ diagnosis.diagnosed_on }}</dd></div>
+            <div><dt>Follow-up</dt><dd>{{ diagnosis.follow_up }}</dd></div>
+            <div class="detail-wide"><dt>Treatment plan</dt><dd>{{ diagnosis.treatment }}</dd></div>
+            <div class="detail-wide"><dt>Care notes</dt><dd>{{ diagnosis.notes }}</dd></div>
+        </dl>
+    </section>
+</div>
+}

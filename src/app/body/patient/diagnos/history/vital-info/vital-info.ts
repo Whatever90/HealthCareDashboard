@@ -14,7 +14,7 @@ export interface VitalInfoData {
   selector: 'app-vital-info',
   imports: [],
   templateUrl: './vital-info.html',
-  styleUrl: './vital-info.css',
+  styleUrl: './vital-info.scss',
 })
 export class VitalInfo {
   @Input() vital: VitalInfoData = {

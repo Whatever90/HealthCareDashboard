@@ -3,19 +3,56 @@
         <div class="card-container-title">
             Patients
         </div>
-        <div class="icon" id="search-icon">
-        </div>
+        <button type="button"
+                class="icon search-toggle"
+                id="search-icon"
+                [attr.aria-label]="searchOpen ? 'Close patient search' : 'Search patients'"
+                [attr.aria-expanded]="searchOpen"
+                (click)="toggleSearch()"></button>
     </div>
+    @if (searchOpen) {
+        <input class="patient-search"
+               type="search"
+               placeholder="Search patients"
+               aria-label="Search patients by name"
+               [value]="searchTerm"
+               (input)="updateSearch($event)">
+    }
     <div class="patients-list">
-        @for (patient of patients; track patient.name) {
+        @for (patient of visiblePatients; track patient.name) {
             <div class="patient-list-item pointer" [ngClass]="{ 'active bg-azure-light': patient.name === selectedPatientName }" (click)="selectPatient(patient.name)">
                 <img class="patient-photo" [src]="patient.profile_picture" [alt]="patient.name" />
                 <div class="patient-summary">
                     <p class="patient-name">{{ patient.name }}</p>
                     <p class="patient-meta">{{ patient.gender }}, {{ patient.age }}</p>
                 </div>
-                <div class="patient-elepsis-icon"></div>
+                <div class="patient-actions">
+                    @if (isPinned(patient.name)) {
+                        <fa-icon class="pin-indicator"
+                                 [icon]="faThumbtack"
+                                 aria-label="Pinned patient"
+                                 title="Pinned"></fa-icon>
+                    }
+                    <button type="button"
+                            class="patient-elepsis-icon"
+                            [attr.aria-label]="'Actions for ' + patient.name"
+                            [attr.aria-expanded]="openMenuFor === patient.name"
+                            (click)="togglePatientMenu(patient.name, $event)"></button>
+                    @if (openMenuFor === patient.name) {
+                        <div class="patient-menu" (click)="$event.stopPropagation()">
+                            <button type="button" (click)="togglePinned(patient.name, $event)">
+                                {{ isPinned(patient.name) ? 'Unpin patient' : 'Pin to top' }}
+                            </button>
+                            <button type="button" (click)="openPatientPage(patient.name, $event)">
+                                Open full page
+                            </button>
+                        </div>
+                    }
+                </div>
             </div>
+        }
+        @if (visiblePatients.length === 0) {
+            <p class="no-patients">No patients match your search.</p>
         }
     </div>
 

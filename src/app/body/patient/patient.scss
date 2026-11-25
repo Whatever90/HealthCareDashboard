@@ -1,0 +1,198 @@
+@use 'breakpoints' as *;
+
+:host {
+    display: block;
+    height: 100%;
+    min-height: 0;
+}
+
+.patient-detail-row,
+.patient-main-column,
+.patient-side-column {
+    height: 100%;
+    min-height: 0;
+}
+
+.patient-side-stack {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+.patient-detail-row:not(.full-page-layout) .patient-side-stack {
+    overflow-y: auto;
+}
+
+.patient-detail-row:not(.full-page-layout) .lab-results-slot {
+    flex: 1 0 190px;
+    min-height: 190px;
+    margin-top: 12px;
+}
+
+.patient-info-slot {
+    flex: 0 0 auto;
+}
+
+.lab-results-slot {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.care-alerts {
+    margin-top: 12px;
+}
+
+.care-alerts-heading {
+    margin-bottom: 12px;
+}
+
+.care-alerts-eyebrow {
+    margin: 0 0 3px;
+    color: #61757b;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.care-alerts h2 {
+    margin: 0;
+    color: #072635;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.care-alerts-list {
+    display: grid;
+    gap: 8px;
+}
+
+.care-alert-item {
+    display: grid;
+    grid-template-columns: 8px minmax(130px, .35fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #e8eeee;
+    border-radius: 10px;
+    background: #fbfcfc;
+}
+
+.care-alert-item h3 {
+    margin: 0;
+    color: #31555c;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.care-alert-item p {
+    margin: 0;
+    color: #52666d;
+    font-size: 13px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.care-alert-indicator {
+    width: 8px;
+    height: 8px;
+    margin-top: 4px;
+    border-radius: 50%;
+}
+
+.allergy-indicator {
+    background: #d5846b;
+}
+
+.immunization-indicator {
+    background: #e2a840;
+}
+
+.medication-indicator {
+    background: #7d9bd1;
+}
+
+.appointment-indicator {
+    background: #01bfa9;
+}
+
+.goal-indicator {
+    background: #8d78ba;
+}
+
+@media (min-width: ($widescreen + 1px)) {
+    .patient-detail-row.full-page-layout {
+        align-items: stretch;
+    }
+
+    .patient-detail-row.full-page-layout .patient-main-column {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .patient-detail-row.full-page-layout .patient-main-column > diagnos {
+        flex: 0 0 auto;
+        height: auto;
+    }
+
+    .patient-detail-row.full-page-layout .care-alerts {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .patient-detail-row.full-page-layout .care-alerts-list {
+        flex: 1 1 auto;
+        grid-template-rows: repeat(5, minmax(48px, 1fr));
+    }
+}
+
+@media (max-width: $widescreen) {
+    :host {
+        height: auto;
+    }
+
+    .patient-detail-row.full-page-layout .care-alerts {
+        display: none;
+    }
+
+    .patient-detail-row {
+        height: auto;
+        margin: 0;
+    }
+
+    .patient-main-column {
+        order: 2;
+        width: 100%;
+        height: auto;
+        margin-top: 12px;
+    }
+
+    .patient-side-column {
+        order: 1;
+        width: 100%;
+        height: auto;
+    }
+
+    .patient-side-stack {
+        height: auto;
+    }
+
+    .patient-detail-row:not(.full-page-layout) .patient-side-stack {
+        max-height: calc(100vh - 108px);
+    }
+
+    .lab-results-slot {
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .patient-detail-row {
+        --bs-gutter-x: 0;
+    }
+}

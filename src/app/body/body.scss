@@ -1,0 +1,45 @@
+@use 'breakpoints' as *;
+
+.dashboard-body {
+    height: calc(100vh - 108px);
+    overflow: hidden;
+}
+
+.dashboard-row {
+    height: 100%;
+    min-height: 0;
+}
+
+.dashboard-column {
+    height: 100%;
+    min-height: 0;
+}
+
+@media (max-width: $widescreen) {
+    .dashboard-body {
+        height: auto;
+        overflow: visible;
+    }
+}
+
+@media (max-width: $desktop) {
+    .dashboard-row {
+        height: auto;
+        margin: 0;
+    }
+
+    .dashboard-column {
+        height: auto;
+        width: 100%;
+    }
+
+    .dashboard-column:first-child {
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .dashboard-row {
+        --bs-gutter-x: 0;
+    }
+}

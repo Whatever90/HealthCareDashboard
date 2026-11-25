@@ -1,0 +1,336 @@
+<main class="workspace-page">
+    <header class="workspace-heading">
+        <div>
+            <p class="eyebrow">HealthCare Dashboard · Demo workspace</p>
+            <h1>
+                @switch (section) {
+                    @case ('overview') { Overview }
+                    @case ('schedule') { Schedule }
+                    @case ('messages') { Messages }
+                    @case ('transactions') { Transactions }
+                }
+            </h1>
+            <p class="workspace-subtitle">
+                @switch (section) {
+                    @case ('overview') { A clear view of today's clinic activity and care priorities. }
+                    @case ('schedule') { Coordinate visits and keep the clinic day moving smoothly. }
+                    @case ('messages') { Review patient and care-team messages in one place. }
+                    @case ('transactions') { Track sample invoices and payment status in Canadian dollars. }
+                }
+            </p>
+        </div>
+        @if (section === 'schedule') {
+            <button type="button" class="primary-button" (click)="openAppointmentForm()">+ New appointment</button>
+        }
+    </header>
+
+    @switch (section) {
+        @case ('overview') {
+            <section class="overview-grid" aria-label="Clinic overview">
+                <article class="metric-card">
+                    <span class="metric-label">Appointments today</span>
+                    <strong>{{ todayScheduledCount }}</strong>
+                    <span class="metric-footnote">Across the care team</span>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-label">Unread messages</span>
+                    <strong>{{ unreadCount }}</strong>
+                    <a routerLink="/messages" class="metric-link">Review inbox <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-label">Outstanding balance</span>
+                    <strong>{{ formatCurrency(pendingAmount) }}</strong>
+                    <a routerLink="/transactions" class="metric-link">View transactions <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-label">Patient records</span>
+                    <strong>20</strong>
+                    <a routerLink="/" class="metric-link">Open patient list <span aria-hidden="true">→</span></a>
+                </article>
+            </section>
+
+            <section class="overview-columns">
+                <article class="panel-card today-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">Clinic schedule</p>
+                            <h2>Today's appointments</h2>
+                        </div>
+                        <a routerLink="/schedule" class="text-link">View schedule</a>
+                    </div>
+                    @for (appointment of todayAppointments; track appointment.id) {
+                        <div class="today-appointment">
+                        <span class="appointment-time">{{ appointment.time }}</span>
+                        <div>
+                            <strong>{{ appointment.patient }}</strong>
+                            <p>{{ appointment.reason }}</p>
+                        </div>
+                        <span class="status-pill" [class.status-complete]="appointment.status === 'Completed'">
+                            {{ appointment.status }}
+                        </span>
+                        </div>
+                    }
+                    @if (todayAppointments.length === 0) {
+                        <p class="empty-state">No appointments scheduled for today.</p>
+                    }
+                </article>
+
+                <article class="panel-card priority-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">Quick actions</p>
+                            <h2>Care team priorities</h2>
+                        </div>
+                    </div>
+                    <a routerLink="/messages" class="priority-row">
+                        <span class="priority-dot priority-teal"></span>
+                        <span><strong>{{ unreadCount }} messages</strong><small>Waiting for review</small></span>
+                        <span class="priority-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a routerLink="/transactions" class="priority-row">
+                        <span class="priority-dot priority-amber"></span>
+                        <span><strong>{{ pendingInvoiceCount }} invoices</strong><small>Need payment follow-up</small></span>
+                        <span class="priority-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a routerLink="/" class="priority-row">
+                        <span class="priority-dot priority-blue"></span>
+                        <span><strong>Patient directory</strong><small>Search the care roster</small></span>
+                        <span class="priority-arrow" aria-hidden="true">→</span>
+                    </a>
+                </article>
+            </section>
+
+            <section class="panel-card resource-panel">
+                <div class="panel-heading resource-heading">
+                    <div>
+                        <p class="eyebrow">Canadian public resources</p>
+                        <h2>Health guidance &amp; legislation</h2>
+                    </div>
+                    <span class="demo-note">External links open official sources</span>
+                </div>
+                <div class="resource-grid">
+                    @for (resource of publicResources; track resource.title) {
+                        <a class="resource-card"
+                           [href]="resource.url"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <span class="resource-kind">{{ resource.kind }}</span>
+                            <strong>{{ resource.title }}</strong>
+                            <span class="resource-description">{{ resource.description }}</span>
+                            <span class="resource-link">Open resource <span aria-hidden="true">↗</span></span>
+                        </a>
+                    }
+                </div>
+            </section>
+            <p class="demo-disclaimer">Demo workspace only. All displayed appointments, messages, and billing entries are sample data.</p>
+        }
+
+        @case ('schedule') {
+            <section class="panel-card schedule-panel">
+                <div class="schedule-toolbar">
+                    <div class="week-controls">
+                        <button type="button" class="icon-button" aria-label="Previous week" (click)="changeWeek(-1)">‹</button>
+                        <h2>{{ weekRangeLabel }}</h2>
+                        <button type="button" class="icon-button" aria-label="Next week" (click)="changeWeek(1)">›</button>
+                        @if (weekOffset !== 0) {
+                            <button type="button" class="subtle-button" (click)="showCurrentWeek()">Today</button>
+                        }
+                    </div>
+                    <div class="filter-tabs" aria-label="Filter appointments">
+                        <button type="button" [class.active-filter]="appointmentFilter === 'all'" (click)="appointmentFilter = 'all'">All</button>
+                        <button type="button" [class.active-filter]="appointmentFilter === 'upcoming'" (click)="appointmentFilter = 'upcoming'">Upcoming</button>
+                        <button type="button" [class.active-filter]="appointmentFilter === 'completed'" (click)="appointmentFilter = 'completed'">Completed</button>
+                    </div>
+                </div>
+                <div class="appointment-list">
+                    @for (appointment of currentWeekAppointments; track appointment.id) {
+                        <article class="appointment-card">
+                            <div class="appointment-date-block">
+                                <strong>{{ appointment.date.slice(8, 10) }}</strong>
+                                <span>{{ formatDate(appointment.date).slice(0, 3) }}</span>
+                            </div>
+                            <div class="appointment-time-block">
+                                <strong>{{ appointment.time }}</strong>
+                                <span>{{ appointment.status }}</span>
+                            </div>
+                            <div class="appointment-description">
+                                <h3>{{ appointment.patient }}</h3>
+                                <p>{{ appointment.reason }}</p>
+                            </div>
+                            @if (appointment.status === 'Scheduled') {
+                                <button type="button" class="text-button cancel-button" (click)="cancelAppointment(appointment.id)">
+                                    Cancel
+                                </button>
+                            }
+                        </article>
+                    }
+                    @if (currentWeekAppointments.length === 0) {
+                        <p class="empty-state">No appointments match this view. Try another week or add an appointment.</p>
+                    }
+                </div>
+            </section>
+            <p class="demo-disclaimer">Appointments are local demo entries and are not written to a medical record.</p>
+        }
+
+        @case ('messages') {
+            <section class="panel-card inbox-panel">
+                <aside class="inbox-sidebar">
+                    <div class="inbox-tools">
+                        <input type="search"
+                               placeholder="Search messages"
+                               aria-label="Search messages"
+                               [(ngModel)]="messageSearch">
+                        <div class="filter-tabs">
+                            <button type="button" [class.active-filter]="messageFilter === 'all'" (click)="messageFilter = 'all'">All</button>
+                            <button type="button" [class.active-filter]="messageFilter === 'unread'" (click)="messageFilter = 'unread'">Unread ({{ unreadCount }})</button>
+                        </div>
+                    </div>
+                    <div class="message-list">
+                        @for (message of filteredMessages; track message.id) {
+                            <button type="button"
+                                    class="message-list-item"
+                                    [class.selected-message]="selectedMessageId === message.id"
+                                    [class.unread-message]="!message.read"
+                                    (click)="selectMessage(message)">
+                                <span class="message-avatar">{{ getInitials(message.sender) }}</span>
+                                <span class="message-list-copy">
+                                    <span class="message-list-top"><strong>{{ message.sender }}</strong><time>{{ message.received }}</time></span>
+                                    <span class="message-list-subject">{{ message.subject }}</span>
+                                    <span class="message-list-preview">{{ message.preview }}</span>
+                                </span>
+                            </button>
+                        }
+                        @if (filteredMessages.length === 0) {
+                            <p class="empty-state inbox-empty">No messages match your search.</p>
+                        }
+                    </div>
+                </aside>
+                <article class="message-reading-pane">
+                    @if (selectedMessage; as message) {
+                        <header class="message-reading-header">
+                            <div>
+                                <p class="eyebrow">{{ message.patient }} · {{ message.role }}</p>
+                                <h2>{{ message.subject }}</h2>
+                            </div>
+                            <button type="button" class="subtle-button" (click)="toggleSelectedMessageRead()">
+                                Mark as {{ message.read ? 'unread' : 'read' }}
+                            </button>
+                        </header>
+                        <div class="message-sender">
+                            <span class="message-avatar large-avatar">{{ getInitials(message.sender) }}</span>
+                            <div><strong>{{ message.sender }}</strong><span>{{ message.role }} · {{ message.received }}</span></div>
+                        </div>
+                        <p class="message-body">{{ message.body }}</p>
+                        <p class="message-demo-note">Demo inbox: messages are sample content and are not sent or received externally.</p>
+                    } @else {
+                        <p class="empty-state">Select a message to read it.</p>
+                    }
+                </article>
+            </section>
+        }
+
+        @case ('transactions') {
+            <section class="transaction-summary">
+                <article class="metric-card">
+                    <span class="metric-label">Outstanding</span>
+                    <strong>{{ formatCurrency(pendingAmount) }}</strong>
+                    <span class="metric-footnote">Sample pending invoices</span>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-label">Paid invoices</span>
+                    <strong>{{ paidInvoiceCount }}</strong>
+                    <span class="metric-footnote">Recorded in this demo</span>
+                </article>
+                <article class="metric-card">
+                    <span class="metric-label">Pending invoices</span>
+                    <strong>{{ pendingInvoiceCount }}</strong>
+                    <span class="metric-footnote">Require follow-up</span>
+                </article>
+            </section>
+            <section class="panel-card transactions-panel">
+                <div class="panel-heading transaction-heading">
+                    <div>
+                        <p class="eyebrow">Billing workspace</p>
+                        <h2>Recent transactions</h2>
+                    </div>
+                    <div class="filter-tabs" aria-label="Filter transactions">
+                        <button type="button" [class.active-filter]="transactionFilter === 'all'" (click)="transactionFilter = 'all'">All</button>
+                        <button type="button" [class.active-filter]="transactionFilter === 'pending'" (click)="transactionFilter = 'pending'">Pending</button>
+                        <button type="button" [class.active-filter]="transactionFilter === 'paid'" (click)="transactionFilter = 'paid'">Paid</button>
+                    </div>
+                </div>
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr><th>Invoice</th><th>Patient</th><th>Service</th><th>Date</th><th>Amount</th><th>Status</th><th>Action</th></tr>
+                        </thead>
+                        <tbody>
+                            @for (transaction of filteredTransactions; track transaction.id) {
+                                <tr>
+                                    <td class="invoice-id">{{ transaction.id }}</td>
+                                    <td>{{ transaction.patient }}</td>
+                                    <td>{{ transaction.service }}</td>
+                                    <td>{{ transaction.date }}</td>
+                                    <td class="currency-value">{{ formatCurrency(transaction.amount) }}</td>
+                                    <td><span class="status-pill" [class.status-complete]="transaction.status === 'Paid'">{{ transaction.status }}</span></td>
+                                    <td>
+                                        @if (transaction.status === 'Pending') {
+                                            <button type="button" class="text-button" (click)="recordPayment(transaction.id)">Record payment</button>
+                                        } @else {
+                                            <span class="recorded-label">Recorded</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @if (filteredTransactions.length === 0) {
+                        <p class="empty-state">No transactions in this category.</p>
+                    }
+                </div>
+            </section>
+            <p class="demo-disclaimer">Demo billing only. Amounts are fictional and no payments are processed.</p>
+        }
+    }
+
+    @if (showAppointmentForm) {
+        <div class="modal-backdrop" (click)="closeAppointmentForm()">
+            <section class="appointment-modal panel-card"
+                     role="dialog"
+                     aria-modal="true"
+                     aria-labelledby="appointment-modal-title"
+                     (click)="$event.stopPropagation()"
+                     (keydown.escape)="closeAppointmentForm()">
+                <header class="modal-heading">
+                    <div><p class="eyebrow">Schedule</p><h2 id="appointment-modal-title">New appointment</h2></div>
+                    <button type="button" class="icon-button" aria-label="Close appointment form" (click)="closeAppointmentForm()">×</button>
+                </header>
+                <form #appointmentNgForm="ngForm" (ngSubmit)="addAppointment(appointmentNgForm)">
+                    <label>
+                        Patient
+                        <input type="text" name="patient" [(ngModel)]="appointmentForm.patient" required>
+                    </label>
+                    <label>
+                        Visit reason
+                        <input type="text" name="reason" [(ngModel)]="appointmentForm.reason" required>
+                    </label>
+                    <div class="form-row">
+                        <label>
+                            Date
+                            <input type="date" name="date" [(ngModel)]="appointmentForm.date" required>
+                        </label>
+                        <label>
+                            Time
+                            <input type="time" name="time" [(ngModel)]="appointmentForm.time" required>
+                        </label>
+                    </div>
+                    <p class="form-demo-note">This appointment is added to the local demo schedule only.</p>
+                    <div class="modal-actions">
+                        <button type="button" class="subtle-button" (click)="closeAppointmentForm()">Cancel</button>
+                        <button type="submit" class="primary-button">Add appointment</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    }
+</main>

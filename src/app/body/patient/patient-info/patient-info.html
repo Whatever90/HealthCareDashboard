@@ -1,7 +1,8 @@
-<div class="wrapper card-container d-flex justify-content-between align-items-center flex-column gap-3">
+<div class="wrapper card-container d-flex justify-content-between align-items-center flex-column gap-3"
+     [class.full-page-info]="isFullPage"
+     [class.patient-list-info]="!isFullPage">
     @if (selectedPatient; as patient) {
     <div class="patient-info d-flex flex-column align-items-center mb-1">
-        <!-- PIC 200x200 -->
         @if (patient.profile_picture) {
         <img [src]="patient.profile_picture" alt="Patient Image" class="patient-image">
         } @else {
@@ -9,8 +10,8 @@
         }
     </div>
     <div class="card-container-title">{{ patient.name }}</div>
+    <div class="patient-details-columns">
     <div class="basic-info w-100 d-flex flex-column align-items-start gap-4">
-        <!-- dob -->
         <div class="info-wrapper d-flex">
             <img src="assets/icons/BirthIcon.svg" alt="Birth Icon" class="info-icon me-2">
             <div class="info-item d-flex flex-column">
@@ -18,7 +19,6 @@
                 <span class="info-value fw-bold">{{ patient.date_of_birth | date: 'MMMM d, y' }}</span>
             </div>
         </div>
-        <!-- gender -->
         <div class="info-wrapper d-flex">
             <img src="assets/icons/FemaleIcon.svg" alt="Gender Icon" class="info-icon me-2">
             <div class="info-item d-flex flex-column">
@@ -26,7 +26,6 @@
                 <span class="info-value fw-bold">{{ patient.gender }}</span>
             </div>
         </div>
-        <!-- contact -->
         <div class="info-wrapper d-flex">
             <img src="assets/icons/PhoneIcon.svg" alt="Contact Icon" class="info-icon me-2">
             <div class="info-item d-flex flex-column">
@@ -34,7 +33,6 @@
                 <span class="info-value fw-bold">{{ patient.phone_number }}</span>
             </div>
         </div>
-        <!-- Emergency Contacts -->
         <div class="info-wrapper d-flex">
             <img src="assets/icons/PhoneIcon.svg" alt="Emergency Icon" class="info-icon me-2">
             <div class="info-item d-flex flex-column">
@@ -42,7 +40,39 @@
                 <span class="info-value fw-bold">{{ patient.emergency_contact }}</span>
             </div>
         </div>
-        <!-- Insurance Provider -->
+        @if (showMoreDetails && !isFullPage) {
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Occupation:</span>
+                <span class="info-value fw-bold">{{ patient.occupation }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Marital Status:</span>
+                <span class="info-value fw-bold">{{ patient.marital_status }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Address:</span>
+                <span class="info-value fw-bold">{{ patient.address }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Primary Care Physician:</span>
+                <span class="info-value fw-bold">{{ patient.primary_care_physician }}</span>
+            </div>
+        </div>
+        }
+        @if (isFullPage) {
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Emergency Contact Relationship:</span>
+                <span class="info-value fw-bold">{{ patient.emergency_contact_relationship }}</span>
+            </div>
+        </div>
         <div class="info-wrapper d-flex">
             <img src="assets/icons/InsuranceIcon.svg" alt="Insurance Icon" class="info-icon me-2">
             <div class="info-item d-flex flex-column">
@@ -50,8 +80,153 @@
                 <span class="info-value fw-bold">{{ patient.insurance_type }}</span>
             </div>
         </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Preferred Language:</span>
+                <span class="info-value fw-bold">{{ patient.preferred_language }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Communication Preference:</span>
+                <span class="info-value fw-bold">{{ patient.communication_preference }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Preferred Pharmacy:</span>
+                <span class="info-value fw-bold">{{ patient.preferred_pharmacy }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Primary Care Physician:</span>
+                <span class="info-value fw-bold">{{ patient.primary_care_physician }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Care Team:</span>
+                <span class="info-value fw-bold">{{ patient.care_team.join(', ') }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Immunization Summary:</span>
+                <span class="info-value fw-bold">{{ patient.immunization_summary }}</span>
+            </div>
+        </div>
+        }
 
     </div>
-    <button class="bg-azure btn show-all-btn m-3 ps-4 pe-4"> Show All Information</button>
+    @if (showMoreDetails || isFullPage) {
+    <div class="extended-details w-100 d-flex flex-column gap-3"
+         [class.full-page-responsive-details]="isFullPage"
+         [class.expanded]="showMoreDetails"
+         aria-label="Additional patient details">
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Blood Type:</span>
+                <span class="info-value fw-bold">{{ patient.blood_type }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Height / Weight:</span>
+                <span class="info-value fw-bold">{{ patient.height }} / {{ patient.weight }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">BMI:</span>
+                <span class="info-value fw-bold">{{ patient.bmi }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Allergies:</span>
+                <span class="info-value fw-bold">{{ patient.allergies.join(', ') || 'None listed' }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Medications:</span>
+                <span class="info-value fw-bold">{{ patient.medications.join(', ') || 'None listed' }}</span>
+            </div>
+        </div>
+        @if (isFullPage) {
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Occupation:</span>
+                <span class="info-value fw-bold">{{ patient.occupation }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Marital Status:</span>
+                <span class="info-value fw-bold">{{ patient.marital_status }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Address:</span>
+                <span class="info-value fw-bold">{{ patient.address }}</span>
+            </div>
+        </div>
+        }
+        @if (isFullPage) {
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Medical History:</span>
+                <span class="info-value fw-bold">{{ patient.medical_history }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Surgical History:</span>
+                <span class="info-value fw-bold">{{ patient.surgical_history }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Care Goals:</span>
+                <span class="info-value fw-bold">{{ patient.care_goals }}</span>
+            </div>
+        </div>
+        }
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Last Visit:</span>
+                <span class="info-value fw-bold">{{ patient.last_visit }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Next Appointment:</span>
+                <span class="info-value fw-bold">{{ patient.next_appointment }}</span>
+            </div>
+        </div>
+        <div class="info-wrapper d-flex">
+            <div class="info-item d-flex flex-column">
+                <span class="info-label">Smoking Status:</span>
+                <span class="info-value fw-bold">{{ patient.smoking_status }}</span>
+            </div>
+        </div>
+    </div>
+    }
+    </div>
+    <button type="button"
+            class="bg-azure btn show-all-btn m-3 ps-4 pe-4"
+            [attr.aria-expanded]="showMoreDetails"
+            (click)="showMoreDetails = !showMoreDetails">
+        {{ showMoreDetails ? 'Show Less Details' : 'Show More Details' }}
+    </button>
+    @if (!isFullPage) {
+    <button type="button"
+            class="btn view-full-info-btn mb-2"
+            (click)="openFullPage()">
+        View Full Info
+    </button>
+    }
     }
 </div>

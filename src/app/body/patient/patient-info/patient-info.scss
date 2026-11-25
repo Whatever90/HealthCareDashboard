@@ -1,0 +1,157 @@
+@use 'breakpoints' as *;
+
+.patient-image,
+.patient-image-placeholder {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.patient-image {
+    object-fit: cover;
+}
+
+.info-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: inline-block;
+}
+
+.patient-image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F6F7F8;
+    color: #707070;
+    font-size: 72px;
+    font-weight: 700;
+}
+.info-item {
+    font-size: 14px;
+}
+.show-all-btn {
+    border-radius: 41px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.view-full-info-btn {
+    border: 1px solid #01bfa9;
+    border-radius: 41px;
+    color: #075c57;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.view-full-info-btn:hover,
+.view-full-info-btn:focus-visible {
+    background: #e8f8f6;
+}
+
+.extended-details {
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.patient-details-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+@media (min-width: ($mobile + 1px)) and (max-width: $widescreen) {
+    .patient-list-info .patient-details-columns {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+        column-gap: 20px;
+    }
+
+    .patient-list-info .basic-info,
+    .patient-list-info .extended-details {
+        gap: 16px !important;
+    }
+
+    .patient-list-info .extended-details {
+        max-height: none;
+        overflow: visible;
+    }
+}
+
+.full-page-responsive-details {
+    display: none !important;
+}
+
+.full-page-responsive-details.expanded {
+    display: flex !important;
+}
+
+@media (min-width: $widescreen) {
+    .patient-list-info.wrapper {
+        gap: 8px !important;
+    }
+
+    .patient-list-info .patient-image,
+    .patient-list-info .patient-image-placeholder {
+        width: 140px;
+        height: 140px;
+    }
+
+    .patient-list-info .basic-info {
+        gap: 16px !important;
+    }
+
+    .patient-list-info .show-all-btn {
+        margin: 4px 0 !important;
+    }
+}
+
+@media (min-width: $tablet) and (max-width: $widescreen) {
+    .full-page-info .patient-details-columns {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+        gap: 32px;
+    }
+
+    .full-page-info .full-page-responsive-details {
+        display: flex !important;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .full-page-info .show-all-btn {
+        display: none !important;
+    }
+}
+
+@media (max-width: $desktop) {
+    .patient-image,
+    .patient-image-placeholder {
+        width: 140px;
+        height: 140px;
+    }
+
+    .patient-image-placeholder {
+        font-size: 56px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .patient-image,
+    .patient-image-placeholder {
+        width: 112px;
+        height: 112px;
+    }
+
+    .info-item {
+        font-size: 13px;
+    }
+
+    .patient-image-placeholder {
+        font-size: 44px;
+    }
+}

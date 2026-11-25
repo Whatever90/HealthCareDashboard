@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'breakpoints' as *;
+
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 
 * {
@@ -49,4 +50,46 @@ p {
 }
 .pointer {
     cursor: pointer;
+}
+
+@media (max-width: $widescreen) {
+    body {
+        padding: 12px;
+    }
+
+    .card-container {
+        padding: 16px;
+    }
+
+    .card-container-title {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: $widescreen) {
+    html,
+    body {
+        height: auto;
+        min-height: 100%;
+    }
+
+    body {
+        overflow: visible;
+    }
+}
+
+@media (max-width: $mobile) {
+    body {
+        padding: 8px;
+    }
+
+    .card-container {
+        border-radius: 12px;
+        padding: 12px;
+        margin-top: 12px;
+    }
+
+    .card-container-title {
+        font-size: 19px;
+    }
 }

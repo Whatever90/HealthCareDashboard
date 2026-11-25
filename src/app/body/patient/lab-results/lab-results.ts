@@ -4,7 +4,7 @@ const SELECTED_RESULT_KEY = '';
   selector: 'lab-results',
   imports: [],
   templateUrl: './lab-results.html',
-  styleUrl: './lab-results.css',
+  styleUrl: './lab-results.scss',
 })
 
 export class LabResults implements OnInit {

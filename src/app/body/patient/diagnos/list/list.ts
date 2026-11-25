@@ -5,8 +5,17 @@ import { DiagnosticItem } from '../../../../patient.service';
   selector: 'list',
   imports: [],
   templateUrl: './list.html',
-  styleUrl: './list.css',
+  styleUrl: './list.scss',
 })
 export class List {
   @Input() diagnostic_list: DiagnosticItem[] = [];
+  selectedDiagnosis: DiagnosticItem | null = null;
+
+  openDiagnosis(diagnosis: DiagnosticItem): void {
+    this.selectedDiagnosis = diagnosis;
+  }
+
+  closeDiagnosis(): void {
+    this.selectedDiagnosis = null;
+  }
 }

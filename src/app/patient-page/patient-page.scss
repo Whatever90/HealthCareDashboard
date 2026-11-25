@@ -1,0 +1,233 @@
+@use 'breakpoints' as *;
+@use 'assets' as assets;
+
+:host {
+    display: block;
+    height: calc(100vh - 108px);
+    overflow: auto;
+}
+
+.patient-page {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 4px 24px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 12px 4px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 20px;
+    background: transparent;
+    color: #236d69;
+    font-weight: 700;
+}
+
+.back-button:hover,
+.back-button:focus-visible {
+    background: #e3f7f4;
+}
+
+.back-arrow {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.patient-page-heading,
+.visit-history-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.patient-page-heading {
+    margin: 0 4px 12px;
+}
+
+.page-icon,
+.visit-heading-icon,
+.visit-calendar-icon {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    background: url(assets.$icon-patients) center / contain no-repeat;
+}
+
+.page-eyebrow {
+    margin: 0 0 3px;
+    color: #5b787f;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+}
+
+.patient-page-heading h1,
+.visit-history-heading h2 {
+    margin: 0;
+    color: #072635;
+    font-weight: 800;
+}
+
+.patient-page-heading h1 {
+    font-size: 25px;
+}
+
+.page-subtitle {
+    margin: 3px 0 0;
+    color: #61757b;
+    font-size: 14px;
+}
+
+patient-detail {
+    height: auto;
+}
+
+.visit-history {
+    margin-top: 18px;
+}
+
+.visit-history-heading {
+    margin-bottom: 24px;
+}
+
+.visit-history-heading::after {
+    content: "Generated sample records";
+    margin-left: auto;
+    color: #61757b;
+    font-size: 12px;
+}
+
+.visit-heading-icon,
+.visit-calendar-icon {
+    width: 30px;
+    height: 30px;
+    background-image: url(assets.$icon-calendar);
+}
+
+.visit-history-heading h2 {
+    font-size: 21px;
+}
+
+.visit-timeline {
+    display: grid;
+    gap: 16px;
+    margin-left: 14px;
+    padding-left: 24px;
+    border-left: 2px solid #d5efeb;
+}
+
+.visit-entry {
+    position: relative;
+}
+
+.visit-marker {
+    position: absolute;
+    top: 20px;
+    left: -32px;
+    width: 14px;
+    height: 14px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: #01bfa9;
+    box-shadow: 0 0 0 2px #bde8e2;
+}
+
+.visit-card {
+    padding: 16px 18px;
+    border: 1px solid #e8eeee;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.visit-card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.visit-card h3 {
+    margin: 0;
+    color: #072635;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.visit-date {
+    margin: 5px 0 0;
+    color: #287c75;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.visit-summary {
+    margin: 12px 0;
+    color: #52666d;
+    font-size: 14px;
+}
+
+.visit-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    color: #52666d;
+    font-size: 13px;
+}
+
+.visit-meta strong {
+    color: #072635;
+}
+
+.page-message {
+    padding: 24px;
+    border-radius: 12px;
+    background: #fff;
+    color: #52666d;
+}
+
+@media (max-width: $desktop) {
+    :host {
+        height: auto;
+        overflow: visible;
+    }
+
+    .patient-page {
+        padding: 0 4px 20px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .patient-page-heading {
+        gap: 10px;
+    }
+
+    .page-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .patient-page-heading h1 {
+        font-size: 21px;
+    }
+
+    .visit-history-heading h2 {
+        font-size: 18px;
+    }
+
+    .visit-timeline {
+        margin-left: 8px;
+        padding-left: 18px;
+    }
+
+    .visit-marker {
+        left: -26px;
+    }
+
+    .visit-card {
+        padding: 14px;
+    }
+}

@@ -1,15 +1,53 @@
 @if (selectedPatient; as patient) {
-  <div class="row patient-detail-row">
+  <div class="row patient-detail-row" [class.full-page-layout]="isFullPage">
     <div class="col-8 patient-main-column">
       <diagnos [diagnostic_list]="patient.diagnostic_list" [diagnosis_history]="patient.diagnosis_history"></diagnos>
+      @if (isFullPage) {
+        <section class="care-alerts card-container" aria-labelledby="care-alerts-heading">
+          <div class="care-alerts-heading">
+            <div>
+              <p class="care-alerts-eyebrow">From this patient record</p>
+              <h2 id="care-alerts-heading">Care Alerts &amp; Reminders</h2>
+            </div>
+          </div>
+          <div class="care-alerts-list">
+            <article class="care-alert-item">
+              <span class="care-alert-indicator allergy-indicator" aria-hidden="true"></span>
+              <h3>Allergy information</h3>
+              <p>{{ patient.allergies.join(', ') || 'No allergies listed' }}</p>
+            </article>
+            <article class="care-alert-item">
+              <span class="care-alert-indicator medication-indicator" aria-hidden="true"></span>
+              <h3>Medication list</h3>
+              <p>{{ patient.medications.join(', ') || 'No medications listed' }}</p>
+            </article>
+            <article class="care-alert-item">
+              <span class="care-alert-indicator immunization-indicator" aria-hidden="true"></span>
+              <h3>Immunization record</h3>
+              <p>{{ patient.immunization_summary }}</p>
+            </article>
+            <article class="care-alert-item">
+              <span class="care-alert-indicator appointment-indicator" aria-hidden="true"></span>
+              <h3>Next appointment</h3>
+              <p>{{ patient.next_appointment }}</p>
+            </article>
+            <article class="care-alert-item">
+              <span class="care-alert-indicator goal-indicator" aria-hidden="true"></span>
+              <h3>Care goal</h3>
+              <p>{{ patient.care_goals }}</p>
+            </article>
+          </div>
+        </section>
+      }
     </div>
     <div class="col-4 patient-side-column">
       <div class="patient-side-stack">
         <div class="patient-info-slot">
-          <patient-info [selectedPatient]="patient"></patient-info>
+          <patient-info [selectedPatient]="patient" [isFullPage]="isFullPage"></patient-info>
         </div>
         <div class="lab-results-slot">
-          <lab-results [results]="patient.lab_results"></lab-results>
+          <lab-results [results]="patient.lab_results"
+                       [class.patient-list-lab-results]="!isFullPage"></lab-results>
         </div>
       </div>
     </div>

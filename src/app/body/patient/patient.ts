@@ -8,8 +8,9 @@ import { Patient } from '../../patient.service';
   selector: 'patient-detail',
   imports: [Diagnos, PatientInfo, LabResults],
   templateUrl: './patient.html',
-  styleUrl: './patient.css',
+  styleUrl: './patient.scss',
 })
 export class PatientDetail {
     @Input() selectedPatient: Patient | null = null;
+    @Input() isFullPage = false;
 }

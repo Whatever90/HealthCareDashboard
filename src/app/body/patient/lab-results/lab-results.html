@@ -4,12 +4,16 @@
             Lab Results
         </div>
     </div>
-    <!-- list of results -->
     <div class="lab-results-list d-flex flex-column">
         @for (result of results; track result) {
         <div class="lab-result-item d-flex justify-content-between align-items-center rounded pointer" [class.selected]="result === selectedResult">
             {{ result }}
-            <img src="assets/icons/download_FILL0_wght300_GRAD0_opsz24.svg" alt="View Details Icon" class="view-details-icon">
+            <span class="download-disabled"
+                  title="Please log in for more details."
+                  aria-label="Please log in for more details."
+                  role="img">
+                <img src="assets/icons/download_FILL0_wght300_GRAD0_opsz24.svg" alt="" class="view-details-icon">
+            </span>
         </div>
         }
     </div>

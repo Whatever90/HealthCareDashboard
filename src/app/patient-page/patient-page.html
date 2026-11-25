@@ -1,0 +1,54 @@
+<main class="patient-page">
+    <button type="button" class="back-button" (click)="returnToDashboard()">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        Back to patients
+    </button>
+
+    @if (patient; as selectedPatient) {
+        <section class="patient-page-heading">
+            <div class="page-icon" aria-hidden="true"></div>
+            <div>
+                <p class="page-eyebrow">Patient record</p>
+                <h1>{{ selectedPatient.name }}</h1>
+                <p class="page-subtitle">Patient overview with generated sample visit history</p>
+            </div>
+        </section>
+
+        <patient-detail [selectedPatient]="selectedPatient" [isFullPage]="true"></patient-detail>
+
+        <section class="visit-history card-container">
+            <div class="visit-history-heading">
+                <div class="visit-heading-icon" aria-hidden="true"></div>
+                <div>
+                    <p class="page-eyebrow">Care timeline</p>
+                    <h2>Admission &amp; Visit History</h2>
+                </div>
+            </div>
+            <div class="visit-timeline">
+                @for (visit of selectedPatient.visit_history; track $index) {
+                    <article class="visit-entry">
+                        <div class="visit-marker" aria-hidden="true"></div>
+                        <div class="visit-card">
+                            <div class="visit-card-heading">
+                                <div>
+                                    <h3>{{ visit.type }}</h3>
+                                    <p class="visit-date">{{ visit.date }} <span>·</span> {{ visit.status }}</p>
+                                </div>
+                                <div class="visit-calendar-icon" aria-hidden="true"></div>
+                            </div>
+                            <p class="visit-summary">{{ visit.summary }}</p>
+                            <div class="visit-meta">
+                                <span><strong>Provider:</strong> {{ visit.provider }}</span>
+                                <span><strong>Location:</strong> {{ visit.location }}</span>
+                            </div>
+                        </div>
+                    </article>
+                }
+            </div>
+        </section>
+    } @else if (loadError) {
+        <div class="page-message" role="alert">Patient details could not be loaded. Please try again later.</div>
+    } @else {
+        <div class="page-message">Loading patient record…</div>
+    }
+</main>

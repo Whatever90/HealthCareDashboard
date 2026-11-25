@@ -1,0 +1,185 @@
+@use 'breakpoints' as *;
+
+:host {
+    display: block;
+    height: 100%;
+    min-height: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100% - 18px);
+    min-height: 0;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 0;
+}
+
+.table-wrapper {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+thead th {
+    background: #F6F7F8 0% 0% no-repeat padding-box;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+thead th:first-child {
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+thead th:last-child {
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+.table> :not(caption)>*>* {
+    font-size: 14px;
+    padding: 10px 16px;
+}
+
+.diagnosis-row {
+    cursor: pointer;
+}
+
+.diagnosis-row:hover,
+.diagnosis-row:focus-visible {
+    background: #f3fbfa;
+    outline: none;
+}
+
+.diagnosis-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgb(7 38 53 / 45%);
+}
+
+.diagnosis-modal {
+    width: min(100%, 560px);
+    max-height: min(90vh, 720px);
+    overflow-y: auto;
+    margin: 0;
+}
+
+.diagnosis-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.diagnosis-modal-header h2 {
+    margin: 0;
+    color: #072635;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.diagnosis-modal-eyebrow {
+    margin-bottom: 6px;
+    color: #52727e;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.modal-close {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: #f1f5f6;
+    color: #072635;
+    font-size: 26px;
+    line-height: 1;
+}
+
+.diagnosis-description {
+    margin-bottom: 20px;
+    color: #52666d;
+    line-height: 1.6;
+}
+
+.diagnosis-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 0;
+}
+
+.diagnosis-details-grid > div {
+    padding: 12px;
+    border-radius: 10px;
+    background: #f6f7f8;
+}
+
+.diagnosis-details-grid .detail-wide {
+    grid-column: 1 / -1;
+}
+
+.diagnosis-details-grid dt {
+    margin-bottom: 4px;
+    color: #61757b;
+    font-size: 12px;
+}
+
+.diagnosis-details-grid dd {
+    margin: 0;
+    color: #072635;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+@media (max-width: $desktop) {
+    :host,
+    .wrapper {
+        height: auto;
+    }
+
+    .table-wrapper {
+        max-height: 360px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .diagnosis-modal-backdrop {
+        padding: 12px;
+    }
+
+    .diagnosis-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .diagnosis-details-grid .detail-wide {
+        grid-column: auto;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .table {
+        min-width: 520px;
+    }
+
+    .table> :not(caption)>*>* {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+}

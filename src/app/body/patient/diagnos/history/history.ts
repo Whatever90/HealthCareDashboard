@@ -6,7 +6,7 @@ import { VitalInfo, VitalInfoData, VitalStatus } from './vital-info/vital-info';
   selector: 'history',
   imports: [Chart, VitalInfo],
   templateUrl: './history.html',
-  styleUrl: './history.css',
+  styleUrl: './history.scss',
 })
 export class History implements OnChanges {
   @Input() diagnosis_history: DiagnosisHistory[] = [];

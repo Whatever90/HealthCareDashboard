@@ -10,7 +10,7 @@ const SELECTED_PATIENT_KEY = 'Jessica Taylor';
   selector: 'app-body',
   imports: [PatientsListComponent, PatientDetail],
   templateUrl: './body.html',
-  styleUrls: ['./body.css'],
+  styleUrls: ['./body.scss'],
 })
 export class Body implements OnInit {
   patientsList: Patient[] = [];

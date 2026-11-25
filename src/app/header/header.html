@@ -1,36 +1,55 @@
 <div class="header">
-    <!-- LOGO -->
-    <div class="logo"></div>
-    <!-- NAVIGATION BUTTONS -->
+    <a class="logo" routerLink="/overview" aria-label="TestCare overview">
+        <span>TEST</span><span class="logo-accent">CARE</span>
+    </a>
     <div class="nav-buttons">
-        <div class="nav-button">
+        <a class="nav-button"
+           routerLink="/overview"
+           routerLinkActive="active bg-azure"
+           ariaCurrentWhenActive="page">
             <div class="icon" id="overview-icon">
             </div>
             Overview
-        </div>
-        <div class="nav-button active bg-azure">
+        </a>
+        <a class="nav-button"
+           routerLink="/"
+           routerLinkActive="active bg-azure"
+           [routerLinkActiveOptions]="{ exact: true }"
+           ariaCurrentWhenActive="page">
             <div class="icon" id="patients-icon">
             </div>
             Patients
-        </div>
-        <div class="nav-button">
+        </a>
+        <a class="nav-button"
+           routerLink="/schedule"
+           routerLinkActive="active bg-azure"
+           ariaCurrentWhenActive="page">
             <div class="icon" id="schedule-icon">
             </div>
             Schedule
-        </div>
-        <div class="nav-button">
+        </a>
+        <a class="nav-button"
+           routerLink="/messages"
+           routerLinkActive="active bg-azure"
+           ariaCurrentWhenActive="page">
             <div class="icon" id="messages-icon">
             </div>
             Message
-        </div>
-        <div class="nav-button">
+        </a>
+        <a class="nav-button"
+           routerLink="/transactions"
+           routerLinkActive="active bg-azure"
+           ariaCurrentWhenActive="page">
             <div class="icon" id="transactions-icon">
             </div>
             Transactions
-        </div>
+        </a>
     </div>
-    <!-- PROFILE -->
-    <div class="profile">
+    <div class="profile"
+         role="group"
+         aria-disabled="true"
+         aria-label="Profile controls disabled. Please log in for more details."
+         title="Please log in for more details.">
         <div id="profile-pic"></div>
         <div class="profile-details border-end pe-3">
             <p class="profile-name fw-bolder">Dr. Jose Simmons</p>
