@@ -1,6 +1,8 @@
 @use 'breakpoints' as *;
 @use 'assets' as assets;
 
+$icons-path: '../../../../../assets/icons';
+
 .diagnose-box-wrapper {
     display: flex;
     flex-direction: row;
@@ -44,7 +46,7 @@
 #dropdown_arrow {
     height: 6px;
     width: 12px;
-    background: url(assets.$icon-expand-more) 0% 0% no-repeat padding-box;
+    background: url(#{$icons-path}/#{assets.$icon-expand-more}) 0% 0% no-repeat padding-box;
 }
 .dot {
     height: 14px;
@@ -69,14 +71,14 @@
     display: inline-block;
     width: 12px;
     height: 12px;
-    background: url(assets.$icon-arrow-up) center / contain no-repeat;
+    background: url(#{$icons-path}/#{assets.$icon-arrow-up}) center / contain no-repeat;
     opacity: 1;
 }
 .trend-arrow-down {
     display: inline-block;
     width: 12px;
     height: 12px;
-    background: url(assets.$icon-arrow-down) center / contain no-repeat;
+    background: url(#{$icons-path}/#{assets.$icon-arrow-down}) center / contain no-repeat;
     opacity: 1;
 }
 

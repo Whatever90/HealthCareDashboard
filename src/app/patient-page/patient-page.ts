@@ -33,7 +33,7 @@ export class PatientPage implements OnInit {
   }
 
   returnToDashboard(): void {
-    this.router.navigate(['/'], {
+    this.router.navigate(['/patients'], {
       queryParams: this.patient ? { patient: this.patient.name } : undefined,
     });
   }

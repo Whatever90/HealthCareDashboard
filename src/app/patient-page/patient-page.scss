@@ -1,6 +1,8 @@
 @use 'breakpoints' as *;
 @use 'assets' as assets;
 
+$icons-path: '../../assets/icons';
+
 :host {
     display: block;
     height: calc(100vh - 108px);
@@ -53,7 +55,7 @@
     flex: 0 0 auto;
     width: 40px;
     height: 40px;
-    background: url(assets.$icon-patients) center / contain no-repeat;
+    background: url(#{$icons-path}/#{assets.$icon-patients}) center / contain no-repeat;
 }
 
 .page-eyebrow {
@@ -105,7 +107,7 @@ patient-detail {
 .visit-calendar-icon {
     width: 30px;
     height: 30px;
-    background-image: url(assets.$icon-calendar);
+    background-image: url(#{$icons-path}/#{assets.$icon-calendar});
 }
 
 .visit-history-heading h2 {

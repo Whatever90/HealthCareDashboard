@@ -4,7 +4,8 @@ import { Body } from './body/body';
 const loadWorkspacePage = () => import('./workspace-page/workspace-page').then((module) => module.WorkspacePage);
 
 export const routes: Routes = [
-  { path: '', component: Body },
+  { path: '', pathMatch: 'full', redirectTo: 'overview' },
+  { path: 'patients', component: Body },
   { path: 'overview', loadComponent: loadWorkspacePage, data: { section: 'overview' } },
   { path: 'schedule', loadComponent: loadWorkspacePage, data: { section: 'schedule' } },
   { path: 'messages', loadComponent: loadWorkspacePage, data: { section: 'messages' } },
@@ -13,5 +14,5 @@ export const routes: Routes = [
     path: 'patients/:patientName',
     loadComponent: () => import('./patient-page/patient-page').then((module) => module.PatientPage),
   },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'overview' },
 ];

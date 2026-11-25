@@ -1,6 +1,9 @@
 @use 'breakpoints' as *;
 @use 'assets' as assets;
 
+$icons-path: '../../assets/icons';
+$profile-photos-path: '../../../public/img';
+
 .header {
     margin-bottom: 18px;
     height: 72px;
@@ -52,27 +55,27 @@
 }
 
 #overview-icon {
-    background: url(assets.$icon-overview) 0% 0% no-repeat padding-box;
+    background: url(#{$icons-path}/#{assets.$icon-overview}) 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 #patients-icon {
-    background: url(assets.$icon-patients) 0% 0% no-repeat padding-box;
+    background: url(#{$icons-path}/#{assets.$icon-patients}) 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 #schedule-icon {
-    background: url(assets.$icon-calendar) 0% 0% no-repeat padding-box;
+    background: url(#{$icons-path}/#{assets.$icon-calendar}) 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 #messages-icon {
-    background: url(assets.$icon-messages) 0% 0% no-repeat padding-box;
+    background: url(#{$icons-path}/#{assets.$icon-messages}) 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 #transactions-icon {
-    background: url(assets.$icon-transactions) 0% 0% no-repeat padding-box;
+    background: url(#{$icons-path}/#{assets.$icon-transactions}) 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
@@ -95,7 +98,7 @@
 #profile-pic {
     width: 44px;
     height: 44px;
-    background: url(assets.$profile-photo) 0% 0% no-repeat padding-box;
+    background: url(#{$profile-photos-path}/#{assets.$profile-photo}) 0% 0% no-repeat padding-box;
     border-radius: 50%;
     margin-right: 8px;
 }
@@ -103,14 +106,14 @@
 #settings-gear-icon {
     width: 20px;
     height: 20px;
-    background: url(assets.$icon-settings) 0% 0% no-repeat padding-box;
+    background: url(#{$icons-path}/#{assets.$icon-settings}) 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 #settings-elepsis-icon {
     width: 20px;
     height: 20px;
-    background: url(assets.$icon-more) 0% 0% no-repeat padding-box;
+    background: url(#{$icons-path}/#{assets.$icon-more}) 0% 0% no-repeat padding-box;
     opacity: 1;
     transform: rotate(90deg);
 }
