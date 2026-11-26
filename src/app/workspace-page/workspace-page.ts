@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { NavigationCountService } from '../navigation-count.service';
 
 type WorkspaceSection = 'overview' | 'schedule' | 'messages' | 'transactions';
 type AppointmentFilter = 'all' | 'upcoming' | 'completed';
@@ -144,7 +145,10 @@ export class WorkspacePage implements OnInit {
     },
   ];
 
-  constructor(private readonly route: ActivatedRoute) {}
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly navigationCount: NavigationCountService,
+  ) {}
 
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
@@ -158,6 +162,8 @@ export class WorkspacePage implements OnInit {
       this.selectedMessageId = this.messages[0].id;
       this.messages[0].read = true;
     }
+    this.syncUnreadCount();
+    this.syncTodayScheduleCount();
   }
 
   get unreadCount(): number {
@@ -241,13 +247,23 @@ export class WorkspacePage implements OnInit {
   selectMessage(message: InboxMessage): void {
     this.selectedMessageId = message.id;
     message.read = true;
+    this.syncUnreadCount();
   }
 
   toggleSelectedMessageRead(): void {
     const message = this.selectedMessage;
     if (message) {
       message.read = !message.read;
+      this.syncUnreadCount();
     }
+  }
+
+  private syncUnreadCount(): void {
+    this.navigationCount.setUnreadMessageCount(this.unreadCount);
+  }
+
+  private syncTodayScheduleCount(): void {
+    this.navigationCount.setTodayScheduleCount(this.todayAppointments.length);
   }
 
   changeWeek(offset: number): void {
@@ -291,12 +307,14 @@ export class WorkspacePage implements OnInit {
     this.appointmentFilter = 'all';
     this.showAppointmentForm = false;
     this.weekOffset = this.offsetForDate(this.parseDateInput(this.appointmentForm.date));
+    this.syncTodayScheduleCount();
   }
 
   cancelAppointment(id: number): void {
     this.appointments = this.appointments.map((appointment) =>
       appointment.id === id ? { ...appointment, status: 'Cancelled' } : appointment,
     );
+    this.syncTodayScheduleCount();
   }
 
   recordPayment(id: string): void {

@@ -27,6 +27,11 @@
             <div class="icon" id="schedule-icon">
             </div>
             Schedule
+            @if (navigationCount.todayScheduleCount() > 0) {
+                <span class="message-count schedule-count" [attr.aria-label]="navigationCount.todayScheduleCount() + ' schedule events today'">
+                    {{ navigationCount.todayScheduleCount() }}
+                </span>
+            }
         </a>
         <a class="nav-button"
            routerLink="/messages"
@@ -35,6 +40,11 @@
             <div class="icon" id="messages-icon">
             </div>
             Message
+            @if (navigationCount.unreadMessageCount() > 0) {
+                <span class="message-count" [attr.aria-label]="navigationCount.unreadMessageCount() + ' unread messages'">
+                    {{ navigationCount.unreadMessageCount() }}
+                </span>
+            }
         </a>
         <a class="nav-button"
            routerLink="/transactions"
