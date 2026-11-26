@@ -432,6 +432,17 @@
     font-weight: 800;
 }
 
+.appointment-description h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.appointment-description h3 a:hover,
+.appointment-description h3 a:focus-visible {
+    color: #0a9b8e;
+    text-decoration: underline;
+}
+
 .appointment-description p {
     margin: 3px 0 0;
     color: #718187;

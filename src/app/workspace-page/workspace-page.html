@@ -154,7 +154,9 @@
                                 <span>{{ appointment.status }}</span>
                             </div>
                             <div class="appointment-description">
-                                <h3>{{ appointment.patient }}</h3>
+                                <h3>
+                                    <a [routerLink]="['/patients', appointment.patient]">{{ appointment.patient }}</a>
+                                </h3>
                                 <p>{{ appointment.reason }}</p>
                             </div>
                             @if (appointment.status === 'Scheduled') {
